@@ -43,7 +43,7 @@ def login():
     if request.method == 'POST':
         email, pwd = request.form['email'], request.form['pwd']
         if email == USEREMAIL and pwd == USERPASSWORD:
-            session['infosession'] = f"{email}_{pwd}"
+            #session['infosession'] = f"{email}_{pwd}"
             return redirect(url_for('home'))
     return render_template('account/signup.html')
 
