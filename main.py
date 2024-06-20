@@ -11,9 +11,9 @@ Session(app)
 
 load_dotenv()
 
-MYNAME = os.getenv('MYNAME')
-USEREMAIL = os.getenv('USEREMAIL')
-USERPASSWORD = os.getenv('USERPASSWORD')
+MYNAME = os.getenv('MYNAME',"Testeur")
+USEREMAIL = os.getenv('USEREMAIL', "test@gmail.com")
+USERPASSWORD = os.getenv('USERPASSWORD', "ddd455")
 
 @app.route('/')
 @app.route('/home')
@@ -43,7 +43,7 @@ def login():
     if request.method == 'POST':
         email, pwd = request.form['email'], request.form['pwd']
         if email == USEREMAIL and pwd == USERPASSWORD:
-            #session['infosession'] = f"{email}_{pwd}"
+            session['infosession'] = f"{email}_{pwd}"
             return redirect(url_for('home'))
     return render_template('account/signup.html')
 
