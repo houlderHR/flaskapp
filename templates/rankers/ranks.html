@@ -1,0 +1,384 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Rankers{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/rankers/style.css') }}" />
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/home/script.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<nav class="nav">
+  <div class="container">
+    <h1 class="logo"><a href="/">Sample Site</a></h1>
+    <ul>
+      {% if context.session %}
+        <li><a href="#" class="current">Bonjour {{ context.user }}</a></li>
+        <li><a href="{{ url_for('rank') }}">Rankers</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      {% else %}
+        <li><a href="/" class="current">Home</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div>
+  <main class="st_viewport">
+    <div class="st_wrap_table" data-table_id="0">
+      <header class="st_table_header">
+        <h2>Table header one</h2>
+        <div class="st_row">
+          <div class="st_column _rank">Rank</div>
+          <div class="st_column _name">Name</div>
+          <div class="st_column _surname">Surname</div>
+          <div class="st_column _year">Year</div>
+          <div class="st_column _section">Section</div>
+        </div>
+      </header>
+      <div class="st_table">
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">John</div>
+          <div class="st_column _surname">Doe</div>
+          <div class="st_column _year">1973</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Max</div>
+          <div class="st_column _surname">Luke</div>
+          <div class="st_column _year">1971</div>
+          <div class="st_column _section">USA</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Kunze</div>
+          <div class="st_column _year">2015</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Janina</div>
+          <div class="st_column _surname">Endres</div>
+          <div class="st_column _year">1955</div>
+          <div class="st_column _section">Belgium</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Lena</div>
+          <div class="st_column _surname">Eifel</div>
+          <div class="st_column _year">1996</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Nacht</div>
+          <div class="st_column _year">1968</div>
+          <div class="st_column _section">Swiss</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Vanessa</div>
+          <div class="st_column _surname">Schneider</div>
+          <div class="st_column _year">2004</div>
+          <div class="st_column _section">Russia</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">laura</div>
+          <div class="st_column _surname">Beike</div>
+          <div class="st_column _year">1952</div>
+          <div class="st_column _section">Sweden</div>
+        </div>
+      </div>
+    </div>
+    <div class="st_wrap_table" data-table_id="1">
+      <header class="st_table_header">
+        <h2>Holy shit :@</h2>
+        <div class="st_row">
+          <div class="st_column _rank">Rank</div>
+          <div class="st_column _name">Name</div>
+          <div class="st_column _surname">Surname</div>
+          <div class="st_column _year">Year</div>
+          <div class="st_column _section">Section</div>
+        </div>
+      </header>
+      <div class="st_table">
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Kunze</div>
+          <div class="st_column _year">2015</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Janina</div>
+          <div class="st_column _surname">Endres</div>
+          <div class="st_column _year">1955</div>
+          <div class="st_column _section">Belgium</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Lena</div>
+          <div class="st_column _surname">Eifel</div>
+          <div class="st_column _year">1996</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">John</div>
+          <div class="st_column _surname">Doe</div>
+          <div class="st_column _year">1973</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Max</div>
+          <div class="st_column _surname">Luke</div>
+          <div class="st_column _year">1971</div>
+          <div class="st_column _section">USA</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Nacht</div>
+          <div class="st_column _year">1968</div>
+          <div class="st_column _section">Swiss</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Vanessa</div>
+          <div class="st_column _surname">Schneider</div>
+          <div class="st_column _year">2004</div>
+          <div class="st_column _section">Russia</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">laura</div>
+          <div class="st_column _surname">Beike</div>
+          <div class="st_column _year">1952</div>
+          <div class="st_column _section">Sweden</div>
+        </div>
+      </div>
+    </div>
+    <div class="st_wrap_table" data-table_id="2">
+      <header class="st_table_header">
+        <h2>Isn't that nice</h2>
+        <div class="st_row">
+          <div class="st_column _rank">Rank</div>
+          <div class="st_column _name">Name</div>
+          <div class="st_column _surname">Surname</div>
+          <div class="st_column _year">Year</div>
+          <div class="st_column _section">Section</div>
+        </div>
+      </header>
+      <div class="st_table">
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Vanessa</div>
+          <div class="st_column _surname">Schneider</div>
+          <div class="st_column _year">2004</div>
+          <div class="st_column _section">Russia</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">laura</div>
+          <div class="st_column _surname">Beike</div>
+          <div class="st_column _year">1952</div>
+          <div class="st_column _section">Sweden</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">John</div>
+          <div class="st_column _surname">Doe</div>
+          <div class="st_column _year">1973</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Max</div>
+          <div class="st_column _surname">Luke</div>
+          <div class="st_column _year">1971</div>
+          <div class="st_column _section">USA</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Kunze</div>
+          <div class="st_column _year">2015</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Janina</div>
+          <div class="st_column _surname">Endres</div>
+          <div class="st_column _year">1955</div>
+          <div class="st_column _section">Belgium</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Lena</div>
+          <div class="st_column _surname">Eifel</div>
+          <div class="st_column _year">1996</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Nacht</div>
+          <div class="st_column _year">1968</div>
+          <div class="st_column _section">Swiss</div>
+        </div>
+      </div>
+    </div>
+    <div class="st_wrap_table" data-table_id="3">
+      <header class="st_table_header">
+        <h2>Native STICKY</h2>
+        <div class="st_row">
+          <div class="st_column _rank">Rank</div>
+          <div class="st_column _name">Name</div>
+          <div class="st_column _surname">Surname</div>
+          <div class="st_column _year">Year</div>
+          <div class="st_column _section">Section</div>
+        </div>
+      </header>
+      <div class="st_table">
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">John</div>
+          <div class="st_column _surname">Doe</div>
+          <div class="st_column _year">1973</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Lena</div>
+          <div class="st_column _surname">Eifel</div>
+          <div class="st_column _year">1996</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Nacht</div>
+          <div class="st_column _year">1968</div>
+          <div class="st_column _section">Swiss</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Vanessa</div>
+          <div class="st_column _surname">Schneider</div>
+          <div class="st_column _year">2004</div>
+          <div class="st_column _section">Russia</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">laura</div>
+          <div class="st_column _surname">Beike</div>
+          <div class="st_column _year">1952</div>
+          <div class="st_column _section">Sweden</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Max</div>
+          <div class="st_column _surname">Luke</div>
+          <div class="st_column _year">1971</div>
+          <div class="st_column _section">USA</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Kunze</div>
+          <div class="st_column _year">2015</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Janina</div>
+          <div class="st_column _surname">Endres</div>
+          <div class="st_column _year">1955</div>
+          <div class="st_column _section">Belgium</div>
+        </div>
+      </div>
+    </div>
+    <div class="st_wrap_table" data-table_id="4">
+      <header class="st_table_header">
+        <h2>CSS3 *~'</h2>
+        <div class="st_row">
+          <div class="st_column _rank">Rank</div>
+          <div class="st_column _name">Name</div>
+          <div class="st_column _surname">Surname</div>
+          <div class="st_column _year">Year</div>
+          <div class="st_column _section">Section</div>
+        </div>
+      </header>
+      <div class="st_table">
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">John</div>
+          <div class="st_column _surname">Doe</div>
+          <div class="st_column _year">1973</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Max</div>
+          <div class="st_column _surname">Luke</div>
+          <div class="st_column _year">1971</div>
+          <div class="st_column _section">USA</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Kunze</div>
+          <div class="st_column _year">2015</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Jonas</div>
+          <div class="st_column _surname">Nacht</div>
+          <div class="st_column _year">1968</div>
+          <div class="st_column _section">Swiss</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Vanessa</div>
+          <div class="st_column _surname">Schneider</div>
+          <div class="st_column _year">2004</div>
+          <div class="st_column _section">Russia</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Janina</div>
+          <div class="st_column _surname">Endres</div>
+          <div class="st_column _year">1955</div>
+          <div class="st_column _section">Belgium</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">Lena</div>
+          <div class="st_column _surname">Eifel</div>
+          <div class="st_column _year">1996</div>
+          <div class="st_column _section">Germany</div>
+        </div>
+        <div class="st_row">
+          <div class="st_column _rank">0</div>
+          <div class="st_column _name">laura</div>
+          <div class="st_column _surname">Beike</div>
+          <div class="st_column _year">1952</div>
+          <div class="st_column _section">Sweden</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/account/style.css') }}" />
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/account/script.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1>Please Login</h1>
+<form method="POST" action="{{ url_for('login') }}">
+    <div class="form-control">
+    <input type="text" name="email" required>
+    <label>Email</label>
+    <!-- <label>
+        <span style="transition-delay: 0ms">E</span>
+        <span style="transition-delay: 50ms">m</span>
+        <span style="transition-delay: 100ms">a</span>
+        <span style="transition-delay: 150ms">i</span>
+        <span style="transition-delay: 200ms">l</span>
+    </label> -->
+    </div>
+
+    <div class="form-control">
+    <input type="password" name="pwd" required>
+    <label>Password</label>
+    </div>
+
+    <button class="btn">Login</button>
+    <p class="text">Don't have an account ? <a href="#">Register</a> | <a href="/">Home</a> </p>
+</form>
+</div>
+{% endblock %}
